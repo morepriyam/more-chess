@@ -1,20 +1,22 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "backend of peetcode",
+  "description": "backend of more-chess",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.2.3",
+    "mongoose": "^7.2.3"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.22"
   }
 }
