@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    width: 100%;
+    background-color: #fba968;
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+
+}
+
+.links {
+    
+    font-weight: bold;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.links a {
+    color: black;
+    text-decoration: none;
+    margin-left: 50px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-shadow: 0 0 1px white;
+}
+
+.links a :hover {
+    filter: drop-shadow(0 0 0.3rem yellow);
+}
