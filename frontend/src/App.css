@@ -1,6 +1,4 @@
-#app {
-  display: grid;
-  place-content: center;
+.App {
   height: 100vh;
   background-color: #202020;
 }
