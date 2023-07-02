@@ -4,8 +4,8 @@ import './Player1.css'
 
 export const Player1 = () => {
   return (
-    <div>
-      
+    <div className='player1'>
+      This is player one.
     </div>
   )
 }
