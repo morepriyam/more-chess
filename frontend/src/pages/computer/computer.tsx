@@ -9,7 +9,7 @@ export const Computer = () => {
   return (
     <div className='computer'>
     <div className='player1'><Player1/> </div>
-    <div><Chessbrd /></div>
+    <div className='chessboard'><Chessbrd /></div>
   </div>)
 }
 

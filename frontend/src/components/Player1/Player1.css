@@ -1,8 +1,8 @@
 .player1 {
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 200px;
-    background-color: crimson;
+    background-color: #F7E0E6;
 }
