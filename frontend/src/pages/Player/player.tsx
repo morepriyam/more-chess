@@ -6,7 +6,7 @@ import Chessbrd from '../../components/Chessboard/Chessbrd'
 
 const Player = () => {
   return (
-    <div className='player'>
+    <div className='multiplayer'>
     <div className='player1'><Player1/></div>
     <div className='chessboard'><Chessbrd/></div>
     <div className='player2'><Player2/></div>
@@ -15,3 +15,5 @@ const Player = () => {
 };
 
 export default Player;
+
+

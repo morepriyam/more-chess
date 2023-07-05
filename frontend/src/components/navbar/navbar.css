@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     width: 100%;
-    min-width: 400px;
+    min-width: 720px;
     justify-content: flex-start;
     height: 100px;
     align-items: center;
