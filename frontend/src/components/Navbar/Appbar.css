@@ -1,0 +1,16 @@
+.logo {
+    height: 60px;
+    width: 60px;
+}
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #02040A;
+    color: aliceblue;
+    height: 80px;
+    padding: 4px;
+}
+
+.main {
+    display: contents;
+}
