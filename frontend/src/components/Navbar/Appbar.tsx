@@ -16,13 +16,16 @@ export default function ButtonAppBar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Toolbar className='toolbar'>
-              <img src='assets/more-chess2.png' alt='assets/more-chess.png' className='logo' onClick={() => {navigate("/")}}/>
+              <img src='assets/more-chess.png' alt='assets/more-chess2.png' className='logo' onClick={() => {navigate("/")}}/>
               <div className='main'>
               <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#C6AA6B" weight="light" /></Button>
               <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#C6AA6B" weight="light" /></Button>
               </div>
+              
+              <Avatar>P</Avatar>
+             
               <div>
-              <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}}>SignOut:&nbsp;<Avatar sx={{ width: 30, height: 21,bgcolor:"#000080"}} variant='rounded'>P</Avatar></Button>
+              <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}}>SignOut&nbsp;</Button>
               </div>
             </Toolbar>
         </Box>

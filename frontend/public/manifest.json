@@ -3,9 +3,9 @@
   "name": "more-chess app",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "500x500",
-      "type": "image/x-icon"
+      "src": "favicon.png",
+      "sizes": "100x100",
+      "type": "image/png"
     },
     {
       "src": "more-chess.png",

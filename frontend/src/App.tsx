@@ -4,6 +4,7 @@ import {Computer} from './pages/Computer/computer'
 import Player from './pages/Player/player';
 import ButtonAppBar from './components/Navbar/Appbar';
 import Signin from './pages/Signin/signin';
+import Signup from './pages/Signup/signup';
 
 
 
@@ -16,7 +17,7 @@ function App() {
       <Routes>
       <Route path="/"/>
       <Route path="/signin" element = {<Signin/>}/>
-      <Route path="/signup"/>
+      <Route path="/signup" element = {<Signup/>}/>
       <Route path="/1vs1" element = {<Player/>}/>
       <Route path="/computer" element = {<Computer/>}/>
       </Routes>

@@ -2,10 +2,7 @@ import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 import {Card, Typography} from "@mui/material";
 
-function Signin() {
-    // const [email,setEmail] = useState("")
-    // const [password,setPassword] = useState("")
-
+function Signup() {
     return <div>
             <div style={{
                 paddingTop: 150,
@@ -14,7 +11,7 @@ function Signin() {
                 justifyContent: "center"
             }}>
                 <Typography variant={"h6"} color='#ADD8E6'>
-                Welcome back. Sign in below
+                Welcome to More-Chess.<br/><center>Signup!</center> 
                 </Typography>
             </div>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -35,10 +32,10 @@ function Signin() {
                 />
                 <br/><br/>
 
-                <Button size={"large"} color="inherit" variant="contained" sx={{bgcolor:'#ADD8E6'}}> Signin</Button>
+                <Button size={"large"} color="inherit" variant="contained" sx={{bgcolor:'#ADD8E6'}}> SignUp</Button>
             </Card>
         </div>
     </div>
 }
 
-export default Signin;
+export default Signup;

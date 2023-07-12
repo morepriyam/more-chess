@@ -2,12 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://admin:admin@peetcode.exl3xcn.mongodb.net/")
+  .connect("mongodb+srv://priyam:9921864516@users.foy0lfi.mongodb.net/")
   .then(function () {
     app.listen(port, function () {
       console.log(`Example app listening on port ${port}`);
@@ -18,8 +18,10 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.send("hello world");
+  res.send("Backend for more-chess");
 });
 
 //signup and signin is in the users route
 app.use("/login", userRouter);
+
+//private routes
