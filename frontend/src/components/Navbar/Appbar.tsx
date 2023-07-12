@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import './Appbar.css';
 import {Cpu,GameController} from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
-import { Avatar} from '@mui/material';
+
 
 export default function ButtonAppBar() {
     const navigate = useNavigate() 
@@ -16,15 +16,10 @@ export default function ButtonAppBar() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Toolbar className='toolbar'>
-              <img src='assets/more-chess.png' alt='assets/more-chess2.png' className='logo' onClick={() => {navigate("/")}}/>
+              <img src='more-chess.png' alt='more-chess2.png' className='logo' onClick={() => {navigate("/")}}/>
               <div className='main'>
               <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#C6AA6B" weight="light" /></Button>
               <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#C6AA6B" weight="light" /></Button>
-              </div>
-              
-              <Avatar>P</Avatar>
-             
-              <div>
               <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}}>SignOut&nbsp;</Button>
               </div>
             </Toolbar>
@@ -36,7 +31,7 @@ export default function ButtonAppBar() {
 return(
     <Box sx={{ flexGrow: 1 }}>
     <Toolbar className='toolbar'>
-      <img src='assets/more-chess2.png' alt='assets/more-chess.png' className='logo' onClick={() => {navigate("/")}}/>
+      <img src='more-chess2.png' alt='more-chess.png' className='logo' onClick={() => {navigate("/")}}/>
       <div style={{display: "flex"}}>
         <div style={{marginRight: 10}}>
         <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}} onClick={() => {navigate("/signup")}}>Signup</Button>
