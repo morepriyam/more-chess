@@ -50,7 +50,7 @@ function Signin() {
                     function callback1(res: Response) {
                         res.json().then(callback2)
                     }
-                    fetch("http://localhost:3001/login/signin", {
+                    fetch("http://localhost:3001/user/signin", {
                         method: "POST",
                         body: JSON.stringify({
                             email: email,

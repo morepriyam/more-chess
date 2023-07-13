@@ -49,4 +49,25 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports = { signup, signin };
+const authenticateJwt = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+    jwt.verify(token, secret_key, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+const me = async (req, res) => {
+  const user = req.user;
+  res.status(200).json({ email: user.email });
+};
+
+module.exports = { signup, signin, me, authenticateJwt };

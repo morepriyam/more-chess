@@ -4,15 +4,33 @@ import Button from '@mui/material/Button';
 import './Appbar.css';
 import {Cpu,GameController} from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
+import { useState ,useEffect} from 'react';
 
 
 export default function ButtonAppBar() {
-    const navigate = useNavigate() 
- 
+    const navigate = useNavigate()
+    const [userEmail,setUserEmail] = useState(null); 
 
-// have to add a auth logic that renders the right page and add initial to variable
+    useEffect(() => {
+      function callback2(data : {email : any}) {
+        if (data.email) {
+            setUserEmail(data.email)
+        }
+    }
+    function callback1(res :Response) {
+        res.json().then(callback2)
+    }
+    fetch("http://localhost:3001/user/me", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    }).then(callback1)
+      
+})
 
- if (true) {
+
+ if (userEmail) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Toolbar className='toolbar'>
@@ -20,7 +38,10 @@ export default function ButtonAppBar() {
               <div className='main'>
               <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#C6AA6B" weight="light" /></Button>
               <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#C6AA6B" weight="light" /></Button>
-              <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}}>SignOut&nbsp;</Button>
+              <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}} onClick={() => {
+                            localStorage.removeItem("token");
+                            window.location.href = "/";
+                        }}> {userEmail}&nbsp;</Button>
               </div>
             </Toolbar>
         </Box>

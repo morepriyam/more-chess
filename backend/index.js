@@ -25,6 +25,6 @@ app.get("/", (req, res) => {
 });
 
 //signup and signin is in the users route
-app.use("/login", userRouter);
+app.use("/user", userRouter);
 
 //private routes
