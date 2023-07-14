@@ -5,13 +5,32 @@ import Player from './pages/Player/player';
 import ButtonAppBar from './components/Navbar/Appbar';
 import Signin from './pages/Signin/signin';
 import Signup from './pages/Signup/signup';
-
-
+import { ThemeProvider, createTheme } from "@mui/material";
 
 
 function App() {
+  const Theme = createTheme({
+    palette: {
+    mode: 'light',
+    primary: {
+      main: '#1b2331',
+    },
+    secondary: {
+      main: '#fec100',
+    },
+    error: {
+      main: '#d32f2f',
+    },
+  },
+  typography: {
+    fontFamily: 'Oswald',
+  },
+});
+
+
   return (
-    <div className='App'>
+  <div className='App'>
+    <ThemeProvider theme={Theme}>
      <Router>
       <ButtonAppBar/>
       <Routes>
@@ -22,7 +41,9 @@ function App() {
       <Route path="/computer" element = {<Computer/>}/>
       </Routes>
     </Router>
+    </ThemeProvider>
     </div>
+    
   );
 }
 

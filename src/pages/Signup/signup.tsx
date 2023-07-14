@@ -14,8 +14,8 @@ function Signup() {
                 display: "flex",
                 justifyContent: "center"
             }}>
-                <Typography variant={"h6"} color='#ADD8E6'>
-                Welcome to More-Chess.<br/><center>Signup!</center> 
+                <Typography variant={"h6"}>
+                Welcome to More-Chess.
                 </Typography>
             </div>
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -40,7 +40,7 @@ function Signup() {
                 />
                 <br/><br/>
 
-                <Button size={"large"} color="inherit" variant="contained" sx={{bgcolor:'#ADD8E6'}}  
+                <Button size={"large"} color="inherit" variant="contained" 
                 onClick={() => {
                     function callback2(data: { token: string }) {
                         localStorage.setItem("token", data.token);

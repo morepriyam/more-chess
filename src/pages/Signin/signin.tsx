@@ -14,7 +14,7 @@ function Signin() {
                 display: "flex",
                 justifyContent: "center"
             }}>
-                <Typography variant={"h6"} color='#ADD8E6'>
+                <Typography variant={"h6"}>
                 Welcome back. Sign in below
                 </Typography>
             </div>
@@ -40,7 +40,7 @@ function Signin() {
                 />
                 <br/><br/>
 
-                <Button size={"large"} color="inherit" variant="contained" sx={{bgcolor:'#ADD8E6'}}
+                <Button size={"large"} color="inherit" variant="contained" 
                 onClick={() => {
                     function callback2(data: { token: string }) {
                         localStorage.setItem("token", data.token);
