@@ -32,13 +32,13 @@ export default function ButtonAppBar() {
 
  if (userEmail) {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }}> 
             <Toolbar className='toolbar'>
               <img src='more-chess.png' alt='more-chess2.png' className='logo' onClick={() => {navigate("/")}}/>
               <div className='main'>
-              <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#C6AA6B" weight="light" /></Button>
-              <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#C6AA6B" weight="light" /></Button>
-              <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}} onClick={() => {
+              <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#fec100" weight="thin" /></Button>
+              <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#fec100" weight="thin" /></Button>
+              <Button color="inherit" variant="outlined"  onClick={() => {
                             localStorage.removeItem("token");
                             window.location.href = "/";
                         }}> {userEmail}&nbsp;</Button>
@@ -55,10 +55,10 @@ return(
       <img src='more-chess2.png' alt='more-chess.png' className='logo' onClick={() => {navigate("/")}}/>
       <div style={{display: "flex"}}>
         <div style={{marginRight: 10}}>
-        <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}} onClick={() => {navigate("/signup")}}>Signup</Button>
+        <Button color="inherit" variant="outlined" onClick={() => {navigate("/signup")}}>Signup</Button>
         </div>
         <div>
-        <Button color="inherit" variant="outlined" sx={{bgcolor:"#21262D"}} onClick={() => {navigate("/signin")}}>Signin</Button>
+        <Button color="inherit" variant="outlined" onClick={() => {navigate("/signin")}}>Signin</Button>
         </div>
       </div>
     </Toolbar>

@@ -1,6 +1,5 @@
 .computer {
     display: flex;
     justify-content: center;  
-    width: 100%;
-    margin-top: 90px;
+    margin-top: 50px;
   }

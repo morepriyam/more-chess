@@ -5,8 +5,12 @@
 .toolbar {
     display: flex;
     justify-content: space-between;
-    height: 80px;
-    padding: 4px;
+    height: 90px;
+    background-color: #1b2331;
+    color: #fec100;
+    border-bottom-style: outset;
+    border-width: 1px;
+    border-color: #A4A4A4;
 }
 
 .main {

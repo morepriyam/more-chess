@@ -1,8 +1,5 @@
 .player1 {
-    color: black;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 200px;
     background-color: #F7E0E6;
 }
