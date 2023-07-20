@@ -12,15 +12,19 @@ function App() {
   <div className='App'>
     <Router>
       <ButtonAppBar/>
+      
       <Routes>
       <Route path="/"/>
       <Route path="/signin" element = {<Signin/>}/>
       <Route path="/signup" element = {<Signup/>}/>
       <Route path="/1vs1" element = {<Player/>}/>
       <Route path="/computer" element = {<Computer/>}/>
+      
       </Routes>
-      <Footer/>
+
+      
     </Router>
+    <Footer/>
     </div>);
 }
 
