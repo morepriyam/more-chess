@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Chess } from "chess.js"; // import Chess from  "chess.js"(default) if recieving an error about new Chess() not being a constructor
-
 import Chessboard from "chessboardjsx";
 
 class HumanVsHuman extends Component {
   static propTypes = { children: PropTypes.func };
-
   state = {
     fen: "start",
     // square styles for active drop square

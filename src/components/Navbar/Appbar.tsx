@@ -34,7 +34,7 @@ export default function ButtonAppBar() {
     return (
         <Box sx={{ flexGrow: 1 }}> 
             <Toolbar className='toolbar'>
-              <img src='more-chess.png' alt='more-chess2.png' className='logo' onClick={() => {navigate("/")}}/>
+              <img src='more-chess.png' alt='logo' className='logo' onClick={() => {navigate("/")}}/>
               <div className='main'>
               <Button color='inherit' onClick={() => {navigate("/1vs1")}}> <GameController size={60} color="#fec100" weight="thin" /></Button>
               <Button color='inherit' onClick={() => {navigate("/computer")}}><Cpu size={60} color="#fec100" weight="thin" /></Button>
@@ -52,7 +52,7 @@ export default function ButtonAppBar() {
 return(
     <Box sx={{ flexGrow: 1 }}>
     <Toolbar className='toolbar'>
-      <img src='more-chess2.png' alt='more-chess.png' className='logo' onClick={() => {navigate("/")}}/>
+      <img src='more-chess2.png' alt='logo' className='logo' onClick={() => {navigate("/")}}/>
       <div style={{display: "flex"}}>
         <div style={{marginRight: 10}}>
         <Button color="inherit" variant="outlined" onClick={() => {navigate("/signup")}}>Signup</Button>
