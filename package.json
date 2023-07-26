@@ -12,6 +12,7 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "axios": "^1.4.0",
     "chess.js": "^1.0.0-beta.6",
     "chessboardjsx": "^2.4.7",
     "phosphor-react": "^1.4.1",
