@@ -6,6 +6,7 @@ import ButtonAppBar from './components/Navbar/Appbar';
 import Signin from './pages/Signin/signin';
 import Signup from './pages/Signup/signup';
 import Footer from './components/Footer/footer';
+import Homepage from './pages/Homepage/homepage';
 
 function App() {
   return (
@@ -14,12 +15,11 @@ function App() {
       <ButtonAppBar/>
       
       <Routes>
-      <Route path="/"/>
+      <Route path="/" element = {<Homepage/>}/>
       <Route path="/signin" element = {<Signin/>}/>
       <Route path="/signup" element = {<Signup/>}/>
       <Route path="/1vs1" element = {<Player/>}/>
       <Route path="/computer" element = {<Computer/>}/>
-      
       </Routes>
 
       
