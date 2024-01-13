@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://priyam:9921864516@users.foy0lfi.mongodb.net/")
+  .connect("add your own monngodb link")
   .then(function () {
     app.listen(port, function () {
       console.log(`Example app listening on port ${port}`);
