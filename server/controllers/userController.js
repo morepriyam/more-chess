@@ -1,5 +1,5 @@
 const userModel = require("../models/user");
-
+const zod = require("zod");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const secret_key = "NOTESAPI";
@@ -65,9 +65,24 @@ const authenticateJwt = (req, res, next) => {
   }
 };
 
+const emailSchema = zod.string().email();
+const passwordSchema = zod.string().min(6);
+
+const inputValidation = (req, res, next) => {
+  const { email, password } = req.body;
+  const usernameResponse = emailSchema.safeParse(email);
+  const passwordResponse = passwordSchema.safeParse(password);
+  if (!usernameResponse.success || !passwordResponse.success) {
+    return res
+      .status(400)
+      .json({ customError: "enter valid email, pwd - min 6 char" });
+  }
+  next();
+};
+
 const me = async (req, res) => {
   const user = req.user;
   res.status(200).json({ email: user.email });
 };
 
-module.exports = { signup, signin, me, authenticateJwt };
+module.exports = { signup, signin, me, authenticateJwt , inputValidation};

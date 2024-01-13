@@ -4,10 +4,11 @@ const {
   signin,
   me,
   authenticateJwt,
+  inputValidation
 } = require("../controllers/userController");
 const userRouter = express.Router();
 
-userRouter.post("/signup", signup);
+userRouter.post("/signup",inputValidation, signup);
 
 userRouter.post("/signin", signin);
 
