@@ -6,28 +6,9 @@ import Signin from './pages/Signin/signin';
 import Signup from './pages/Signup/signup';
 import Footer from './components/Footer/footer';
 import Homepage from './pages/Homepage/homepage';
-import { createTheme, ThemeProvider } from "@mui/material";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#2D2F31",
-    },
-    secondary: {
-      main: "#5624D0",
-    },
-    background: {
-      default: "#F7F9FA",
-    },
-    text: {
-      primary: "#000000",
-    },
-  }
-});
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
       <div className='App'>
 
         <Router>
@@ -45,7 +26,7 @@ function App() {
         </Router>
         <Footer />
       </div>
-    </ThemeProvider>);
+  )
 }
 
 export default App;

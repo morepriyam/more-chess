@@ -2,14 +2,14 @@ const userModel = require("../models/user");
 const zod = require("zod");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const secret_key = "NOTESAPI";
+const secret_key = process.env.secret_key || "priyam";
 
 const signup = async (req, res) => {
   const { email, password } = req.body;
   try {
     const existingUser = await userModel.findOne({ email: email });
     if (existingUser) {
-      return res.staus(400).json({ message: "User already exists" });
+      return res.status(400).json({ message: "User already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -30,7 +30,7 @@ const signin = async (req, res) => {
   try {
     const existingUser = await userModel.findOne({ email: email });
     if (!existingUser) {
-      return res.staus(404).json({ message: "User Not Found" });
+      return res.status(404).json({ message: "User Not Found" });
     }
 
     const matchPassword = await bcrypt.compare(password, existingUser.password);
@@ -85,4 +85,4 @@ const me = async (req, res) => {
   res.status(200).json({ email: user.email });
 };
 
-module.exports = { signup, signin, me, authenticateJwt , inputValidation};
+module.exports = { signup, signin, me, authenticateJwt, inputValidation };

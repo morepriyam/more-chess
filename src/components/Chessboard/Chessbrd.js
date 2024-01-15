@@ -165,7 +165,7 @@ export default function WithMoveValidation() {
         }) => (
           <Chessboard
             id="humanVsHuman"
-            width={320}
+            width={700}
             position={position}
             onDrop={onDrop}
             onMouseOverSquare={onMouseOverSquare}
@@ -179,8 +179,8 @@ export default function WithMoveValidation() {
             onDragOverSquare={onDragOverSquare}
             onSquareClick={onSquareClick}
             onSquareRightClick={onSquareRightClick}
-            darkSquareStyle={{ backgroundColor: "rgb(0, 234, 255)" }}
-            lightSquareStyle={{ backgroundColor: "rgb(255, 255, 255)" }}
+            darkSquareStyle={{ backgroundColor: "rgb(119,149,86)" }}
+            lightSquareStyle={{ backgroundColor: "rgb(235,236,208)" }}
           />
         )}
       </HumanVsHuman>
