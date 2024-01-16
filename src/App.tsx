@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Computer } from './pages/Computer/computer'
-import Player from './pages/Player/player';
-import ButtonAppBar from './components/Navbar/Appbar';
-import Signin from './pages/Signin/signin';
-import Signup from './pages/Signup/signup';
-import Footer from './components/Footer/footer';
-import Homepage from './pages/Homepage/homepage';
+import { Computer } from './pages/computer'
+import Player from './pages/player';
+import ButtonAppBar from './components/Appbar';
+import Signin from './pages/signin';
+import Signup from './pages/signup';
+import Footer from './components/footer';
+import Homepage from './pages/homepage';
 
 function App() {
   return (

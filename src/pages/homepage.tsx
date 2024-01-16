@@ -1,4 +1,3 @@
-import './homepage.css'
 
 export const Homepage = () => {
   return (
