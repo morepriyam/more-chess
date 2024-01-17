@@ -3,24 +3,29 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#262522',
-      contrastText: '#C6C6C5',
+      main: '#302E2B',
     },
     secondary: {
+      main: '#302E2B',
+    },
+    success: {
       main: '#80B64B',
-      contrastText: '#FFFFFF',
+    },
+    error: {
+      main: '#7B2929',
     },
     background: {
       default: '#302E2B',
-      paper: '#262522',
+      paper: 'rgb(38,37,34)',
     },
     text: {
-      secondary: '#C3C2C2',
-      primary: '#DFDEDE',
+      primary: '#C3C2C1',
     },
-    error: {
-      main: '#f44336',
+    info: {
+      main: '#09A7DE',
     },
-    divider: 'rgba(183,178,177,0.29)',
+    warning: {
+      main: '#F5BC3E',
+    },
   },
 })

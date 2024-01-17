@@ -1,17 +1,17 @@
+import { GitHub, Instagram, LinkedIn, X } from "@mui/icons-material";
+import { BottomNavigation, BottomNavigationAction, Paper, Typography} from "@mui/material";
+
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-col">
-        <h4>Follow Me</h4>
-        <div className="social-links">
-          <a href="https://github.com/morepriyam"><i className="fab fa-github"></i></a>
-          <a href="https://twitter.com/priyamrm?s=21&t=0yJ0KtSz7ojIUvpHah77nw"><i className="fab fa-twitter"></i></a>
-          <a href="https://instagram.com/priyamrm?igshid=OGQ5ZDc2ODk2ZA=="><i className="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/priyam-more-838692170"><i className="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-
-    </footer>
+    <Paper  sx={{position: 'fixed', bottom: 0, left: 0, right: 0 }}  elevation={3}>
+      <Typography display="flex" justifyContent="center" mt={1}>Let's Connect :</Typography>
+      <BottomNavigation>
+      <BottomNavigationAction href="https://twitter.com/priyamrm?s=21&t=0yJ0KtSz7ojIUvpHah77nw" label="Twitter" icon={<X color="info"/>} />
+      <BottomNavigationAction href="https://instagram.com/priyamrm?igshid=OGQ5ZDc2ODk2ZA==" label="Instagram" icon={<Instagram color="info"/>} />
+      <BottomNavigationAction href="https://www.linkedin.com/in/priyam-more-838692170" label="LinkedIn" icon={<LinkedIn color="info"/>} />
+      <BottomNavigationAction  href="https://github.com/morepriyam" label="Github" icon={<GitHub color="info"/>} />
+      </BottomNavigation>
+    </Paper>
   )
 }
 

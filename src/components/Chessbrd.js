@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
-import { Chess } from "chess.js"; // import Chess from  "chess.js"(default) if recieving an error about new Chess() not being a constructor
+import { Chess } from "chess.js";
 import Chessboard from "chessboardjsx";
 
 class HumanVsHuman extends Component {
@@ -58,20 +58,40 @@ class HumanVsHuman extends Component {
   };
 
   onDrop = ({ sourceSquare, targetSquare }) => {
-    // see if the move is legal
-    let move = this.game.move({
-      from: sourceSquare,
-      to: targetSquare,
-      promotion: "q", // always promote to a queen for example simplicity
-    });
+    try {
+      // see if the move is legal
+      let move = this.game.move({
+        from: sourceSquare,
+        to: targetSquare,
+        promotion: "q", // always promote to a queen for example simplicity
+      });
 
-    // illegal move
-    if (move === null) return;
-    this.setState(({ history, pieceSquare }) => ({
-      fen: this.game.fen(),
-      history: this.game.history({ verbose: true }),
-      squareStyles: squareStyling({ pieceSquare, history }),
-    }));
+      // illegal move
+      if (move === null) {
+        throw new Error("Illegal move");
+      }
+
+      // Check for checkmate
+      if (this.game.isCheckmate()) {
+        console.log("Checkmate!");
+        // You can handle the game-over scenario here, e.g., display a message
+      }
+
+      this.setState(({ history, pieceSquare }) => ({
+        fen: this.game.fen(),
+        history: this.game.history({ verbose: true }),
+        squareStyles: squareStyling({ pieceSquare, history }),
+      }));
+    } catch (error) {
+      this.setState(({ history, pieceSquare }) => ({
+        fen: this.game.fen(),
+        history: history.slice(0, -1), // Remove the last move
+        squareStyles: squareStyling({
+          pieceSquare,
+          history: history.slice(0, -1),
+        }),
+      }));
+    }
   };
 
   onMouseOverSquare = (square) => {
@@ -165,7 +185,7 @@ export default function WithMoveValidation() {
         }) => (
           <Chessboard
             id="humanVsHuman"
-            width={700}
+            width={330}
             position={position}
             onDrop={onDrop}
             onMouseOverSquare={onMouseOverSquare}

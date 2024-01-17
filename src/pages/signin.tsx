@@ -5,27 +5,27 @@ import { useState } from 'react';
 import axios from 'axios';
 import { SportsEsports } from '@mui/icons-material';
 
+const CustomTextfeild = styled(TextField) (({theme}) => ({
+    minWidth:500,
+    backgroundColor: theme.palette.secondary.light
+    }));
+
 function Signin() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-    const CustomTextfeild = styled(TextField) (({theme}) => ({
-        minWidth:500,
-        backgroundColor: theme.palette.divider
-        
-    }));
+
 
     return <Grid container
     spacing={0}
     direction="column"
     alignItems="center"
     justifyContent="center"
-    sx={{ minHeight: '100vh' }}>
-      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 30 , justifyItems:"center"}} >
-            <Typography variant="h5" padding="10px" >
-            Welcome Back!
+    sx={{ minHeight: '100vh',backgroundColor:"#302E2B"  }}>
+      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 40 , justifyItems:"center",marginTop: -100,}} >
+      <Typography variant="h5" padding="10px" marginBottom="40px" display="flex"  alignItems="center" gap="10px">
+                SignIn Below! <SportsEsports color='error'/>
             </Typography>
-            <SportsEsports sx={{marginBottom:"40px"}}/>
 
             
                 <CustomTextfeild
@@ -43,7 +43,7 @@ function Signin() {
                     }}
                 />
                <br/><br/>
-                <Button size="large" color="secondary" variant="contained" 
+                <Button size="large" color="success" variant="contained" 
                     onClick={async() => {
                         const response = await axios.post("http://localhost:3001/user/signin", {
                             email: email,

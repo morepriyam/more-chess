@@ -5,16 +5,19 @@ import { useState } from 'react';
 import axios from 'axios';
 import { SportsEsports } from '@mui/icons-material';
 
+
+const CustomTextfeild = styled(TextField) (({theme}) => ({
+    minWidth:300,
+    backgroundColor: theme.palette.secondary.light
+    
+}));
+
 function Signup() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    const CustomTextfeild = styled(TextField) (({theme}) => ({
-        minWidth:500,
-        backgroundColor: theme.palette.divider
-        
-    }));
+
     
     const handleSubmit = async () => {
         try {
@@ -39,12 +42,12 @@ function Signup() {
     direction="column"
     alignItems="center"
     justifyContent="center"
-    sx={{ minHeight: '100vh' }}>
-      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 30 , justifyItems:"center"}} >
-            <Typography variant="h5" padding="10px" >
-                Welcome To More-Chess!
+    sx={{ minHeight: '100vh',backgroundColor:"#302E2B" }}>
+      <Card variant={"outlined"}   style={{ display:"grid", minWidth: 400, padding: 5 , justifyItems:"center",marginTop: -100}} >
+            <Typography variant="h5" padding="10px" marginBottom="40px" display="flex" alignItems="center" gap="10px">
+                Welcome To More-Chess! <SportsEsports color='error'/>
             </Typography>
-            <SportsEsports sx={{marginBottom:"40px"}}/>
+            
 
             
                 <CustomTextfeild
@@ -64,10 +67,10 @@ function Signup() {
                 />
                 <br/><br/>
                
-                <Button size="large" color="secondary" variant="contained" 
+                <Button size="large" color="success" variant="contained" 
                     onClick={handleSubmit} > SignUp</Button>
                 
-                <Typography color="primary">{error}</Typography>
+                <Typography mt="20px" color="#09A7DE">{error}</Typography>
         
             </Card>
             </Grid>

@@ -1,12 +1,14 @@
+import { Box, Stack } from '@mui/material';
 import WithMoveValidation from '../components/Chessbrd';
+import Sidebar from '../components/Sidebar';
 
 const Player = () => {
-  return (
-    <div className='multiplayer'>
-    <div className='player1'></div>
-    <div className='chessboard'><WithMoveValidation/></div>
-    <div className='player2'></div>
-    </div>
+  return (<Box height="100vh" width="100vw">
+    <Sidebar/>
+    <Stack direction="row" p={10} justifyContent="center">
+    <WithMoveValidation/>
+    </Stack>
+    </Box>
   );
 };
 
