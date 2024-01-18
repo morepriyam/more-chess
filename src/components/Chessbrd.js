@@ -1,37 +1,25 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Chess } from "chess.js";
 import Chessboard from "chessboardjsx";
 
-class HumanVsHuman extends Component {
-  static propTypes = { children: PropTypes.func };
-  state = {
-    fen: "start",
-    // square styles for active drop square
-    dropSquareStyle: {},
-    // custom square styles
-    squareStyles: {},
-    // square with the currently clicked piece
-    pieceSquare: "",
-    // currently clicked square
-    square: "",
-    // array of past game moves
-    history: [],
+const HumanVsHuman = ({ children }) => {
+  const [fen, setFen] = useState("start");
+  const [dropSquareStyle, setDropSquareStyle] = useState({});
+  const [squareStyles, setSquareStyles] = useState({});
+  const [pieceSquare, setPieceSquare] = useState("");
+  const [history, setHistory] = useState([]);
+  const [game, setGame] = useState(null);
+
+  useEffect(() => {
+    setGame(new Chess());
+  }, []);
+
+  const removeHighlightSquare = () => {
+    setSquareStyles(squareStyling({ pieceSquare, history }));
   };
 
-  componentDidMount() {
-    this.game = new Chess();
-  }
-
-  // keep clicked square style and remove hint squares
-  removeHighlightSquare = () => {
-    this.setState(({ pieceSquare, history }) => ({
-      squareStyles: squareStyling({ pieceSquare, history }),
-    }));
-  };
-
-  // show possible moves
-  highlightSquare = (sourceSquare, squaresToHighlight) => {
+  const highlightSquare = (sourceSquare, squaresToHighlight) => {
     const highlightStyles = [sourceSquare, ...squaresToHighlight].reduce(
       (a, c) => {
         return {
@@ -44,64 +32,49 @@ class HumanVsHuman extends Component {
             },
           },
           ...squareStyling({
-            history: this.state.history,
-            pieceSquare: this.state.pieceSquare,
+            history,
+            pieceSquare,
           }),
         };
       },
       {}
     );
 
-    this.setState(({ squareStyles }) => ({
-      squareStyles: { ...squareStyles, ...highlightStyles },
-    }));
+    setSquareStyles((prevStyles) => ({ ...prevStyles, ...highlightStyles }));
   };
 
-  onDrop = ({ sourceSquare, targetSquare }) => {
+  const onDrop = ({ sourceSquare, targetSquare }) => {
     try {
-      // see if the move is legal
-      let move = this.game.move({
+      let move = game.move({
         from: sourceSquare,
         to: targetSquare,
-        promotion: "q", // always promote to a queen for example simplicity
+        promotion: "q",
       });
 
-      // illegal move
       if (move === null) {
         throw new Error("Illegal move");
       }
 
-      // Check for checkmate
-      if (this.game.isCheckmate()) {
+      if (game.isCheckmate()) {
         console.log("Checkmate!");
-        // You can handle the game-over scenario here, e.g., display a message
       }
 
-      this.setState(({ history, pieceSquare }) => ({
-        fen: this.game.fen(),
-        history: this.game.history({ verbose: true }),
-        squareStyles: squareStyling({ pieceSquare, history }),
-      }));
+      setFen(game.fen());
+      setHistory(game.history({ verbose: true }));
+      removeHighlightSquare();
     } catch (error) {
-      this.setState(({ history, pieceSquare }) => ({
-        fen: this.game.fen(),
-        history: history.slice(0, -1), // Remove the last move
-        squareStyles: squareStyling({
-          pieceSquare,
-          history: history.slice(0, -1),
-        }),
-      }));
+      setFen(game.fen());
+      setHistory((prevHistory) => prevHistory.slice(0, -1));
+      removeHighlightSquare();
     }
   };
 
-  onMouseOverSquare = (square) => {
-    // get list of possible moves for this square
-    let moves = this.game.moves({
+  const onMouseOverSquare = (square) => {
+    let moves = game.moves({
       square: square,
       verbose: true,
     });
 
-    // exit if there are no moves available for this square
     if (moves.length === 0) return;
 
     let squaresToHighlight = [];
@@ -109,66 +82,58 @@ class HumanVsHuman extends Component {
       squaresToHighlight.push(moves[i].to);
     }
 
-    this.highlightSquare(square, squaresToHighlight);
+    highlightSquare(square, squaresToHighlight);
   };
 
-  onMouseOutSquare = (square) => this.removeHighlightSquare(square);
+  const onMouseOutSquare = () => removeHighlightSquare();
 
-  // central squares get diff dropSquareStyles
-  onDragOverSquare = (square) => {
-    this.setState({
-      dropSquareStyle:
-        square === "e4" || square === "d4" || square === "e5" || square === "d5"
-          ? { backgroundColor: "cornFlowerBlue" }
-          : { boxShadow: "inset 0 0 1px 3px rgb(0, 255, 0)" },
-    });
+  const onDragOverSquare = (square) => {
+    setDropSquareStyle(
+      square === "e4" || square === "d4" || square === "e5" || square === "d5"
+        ? { backgroundColor: "cornFlowerBlue" }
+        : { boxShadow: "inset 0 0 1px 3px rgb(0, 255, 0)" }
+    );
   };
 
-  onSquareClick = (square) => {
-    this.setState(({ history }) => ({
-      squareStyles: squareStyling({ pieceSquare: square, history }),
-      pieceSquare: square,
-    }));
+  const onSquareClick = (clickedSquare) => {
+    setSquareStyles(squareStyling({ pieceSquare: clickedSquare, history }));
+    setPieceSquare(clickedSquare);
 
-    let move = this.game.move({
-      from: this.state.pieceSquare,
-      to: square,
-      promotion: "q", // always promote to a queen for example simplicity
+    let move = game.move({
+      from: pieceSquare,
+      to: clickedSquare,
+      promotion: "q",
     });
 
-    // illegal move
-    if (move === null) return;
-
-    this.setState({
-      fen: this.game.fen(),
-      history: this.game.history({ verbose: true }),
-      pieceSquare: "",
-    });
+    if (move !== null) {
+      setFen(game.fen());
+      setHistory(game.history({ verbose: true }));
+      setPieceSquare("");
+    }
   };
 
-  onSquareRightClick = (square) =>
-    this.setState({
-      squareStyles: { [square]: { backgroundColor: "deepPink" } },
-    });
+  const onSquareRightClick = (clickedSquare) => {
+    setSquareStyles({ [clickedSquare]: { backgroundColor: "deepPink" } });
+  };
 
-  render() {
-    const { fen, dropSquareStyle, squareStyles } = this.state;
+  return children({
+    squareStyles,
+    position: fen,
+    onMouseOverSquare,
+    onMouseOutSquare,
+    onDrop,
+    dropSquareStyle,
+    onDragOverSquare,
+    onSquareClick,
+    onSquareRightClick,
+  });
+};
 
-    return this.props.children({
-      squareStyles,
-      position: fen,
-      onMouseOverSquare: this.onMouseOverSquare,
-      onMouseOutSquare: this.onMouseOutSquare,
-      onDrop: this.onDrop,
-      dropSquareStyle,
-      onDragOverSquare: this.onDragOverSquare,
-      onSquareClick: this.onSquareClick,
-      onSquareRightClick: this.onSquareRightClick,
-    });
-  }
-}
+HumanVsHuman.propTypes = {
+  children: PropTypes.func,
+};
 
-export default function WithMoveValidation() {
+const WithMoveValidation = () => {
   return (
     <div>
       <HumanVsHuman>
@@ -199,14 +164,14 @@ export default function WithMoveValidation() {
             onDragOverSquare={onDragOverSquare}
             onSquareClick={onSquareClick}
             onSquareRightClick={onSquareRightClick}
-            darkSquareStyle={{ backgroundColor: "rgb(119,149,86)" }}
-            lightSquareStyle={{ backgroundColor: "rgb(235,236,208)" }}
+            darkSquareStyle={{ backgroundColor: "rgb(216,139,116)" }}
+            lightSquareStyle={{ backgroundColor: "rgb(255,251,253)" }}
           />
         )}
       </HumanVsHuman>
     </div>
   );
-}
+};
 
 const squareStyling = ({ pieceSquare, history }) => {
   const sourceSquare = history.length && history[history.length - 1].from;
@@ -226,3 +191,5 @@ const squareStyling = ({ pieceSquare, history }) => {
     }),
   };
 };
+
+export default WithMoveValidation;

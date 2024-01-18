@@ -14,7 +14,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "axios": "^1.4.0",
-    "chess.js": "^1.0.0-beta.6",
+    "chess.js": "^1.0.0-beta.7",
     "chessboardjsx": "^2.4.7",
     "phosphor-react": "^1.4.1",
     "prop-types": "^15.8.1",

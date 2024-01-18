@@ -6,7 +6,7 @@ import axios from 'axios';
 import { SportsEsports } from '@mui/icons-material';
 
 const CustomTextfeild = styled(TextField) (({theme}) => ({
-    minWidth:500,
+    minWidth:300,
     backgroundColor: theme.palette.secondary.light
     }));
 
@@ -22,7 +22,7 @@ function Signin() {
     alignItems="center"
     justifyContent="center"
     sx={{ minHeight: '100vh',backgroundColor:"#302E2B"  }}>
-      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 40 , justifyItems:"center",marginTop: -100,}} >
+      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 5 , justifyItems:"center",marginTop: -100,}} >
       <Typography variant="h5" padding="10px" marginBottom="40px" display="flex"  alignItems="center" gap="10px">
                 SignIn Below! <SportsEsports color='error'/>
             </Typography>

@@ -1,15 +1,12 @@
-import React from 'react'
-
-
-
 import WithMoveValidation from '../components/Chessbrd'
+import { Box, Stack } from '@mui/material';
 
 export const Computer = () => {
-  return (
-    <div className='computer'>
-    <div className='player1'> </div>
-    <div className='chessboard'><WithMoveValidation/></div>
-  </div>
+  return (<Box height="100vh" width="100vw"  sx={{backgroundColor:"#302E2B"}}>
+  <Stack direction="row" pt={15} justifyContent="center">
+  <WithMoveValidation/>
+  </Stack>
+  </Box>
 )
 }
 

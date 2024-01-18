@@ -1,9 +1,15 @@
 import { Brightness6, Extension, Home, MoreHoriz, Newspaper, People, RemoveRedEye, School, SportsEsports } from '@mui/icons-material';
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Switch } from '@mui/material';
-const Sidebar = () => {
+
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
-    <Box  flex={2} sx={{display:{xs:"none" , sm:"none" , md:"none" , lg:"block"}}} >
-        <Box p={4} position="fixed" sx={{ width: '275px', maxWidth: 360, bgcolor: 'secondary.main' , height:'100vh' , color:"text.primary" }}>
+    <Box  flex={2} sx={{display:{xs: isOpen ? 'block' : 'none', sm: isOpen ? 'block' : 'none', md: isOpen ? 'block':'none', lg: 'block'}}}  >
+        <Box p={3}  pt={6} position="fixed" sx={{ width: '275px', maxWidth: 200, bgcolor: '#262522' , height:'100vh' , color:"text.primary" }}>
           
          <List>
           <ListItem disablePadding>
@@ -83,5 +89,6 @@ const Sidebar = () => {
   </Box>
   )
 }
+
 
 export default Sidebar;
