@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -17,8 +16,5 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.3",
     "zod": "^3.22.4"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
   }
 }

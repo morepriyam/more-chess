@@ -7,7 +7,7 @@ import { SportsEsports } from '@mui/icons-material';
 
 
 const CustomTextfeild = styled(TextField) (({theme}) => ({
-    minWidth:300,
+    minWidth:400,
     backgroundColor: theme.palette.secondary.light
     
 }));
@@ -42,10 +42,11 @@ function Signup() {
     direction="column"
     alignItems="center"
     justifyContent="center"
-    sx={{ minHeight: '100vh',backgroundColor:"#302E2B" }}>
-      <Card variant={"outlined"}   style={{ display:"grid", minWidth: 400, padding: 5 , justifyItems:"center",marginTop: -100}} >
+    minHeight='100vh'
+    bgcolor='#302E2B'>
+      <Card variant={"outlined"}   style={{ display:"grid", minWidth: 500, padding: 10 , justifyItems:"center",marginTop: -120}} >
             <Typography variant="h5" padding="10px" marginBottom="40px" display="flex" alignItems="center" gap="10px">
-                Welcome To More-Chess! <SportsEsports color='error'/>
+            <SportsEsports color='warning'/>   Welcome To More-Chess.... 
             </Typography>
             
 

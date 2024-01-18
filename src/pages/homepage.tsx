@@ -4,7 +4,7 @@ import Rightbar from "../components/Rightbar";
 
 export const Homepage = () => {
   return (
-    <Stack direction="row" spacing={2} justifyContent="space-between" >
+    <Stack direction="row" spacing={2} justifyContent="space-between" height='100vh'>
         <Feed/>
         <Rightbar/>   
   </Stack>

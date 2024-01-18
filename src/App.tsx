@@ -6,6 +6,7 @@ import Signin from './pages/signin';
 import Signup from './pages/signup';
 import Footer from './components/footer';
 import Homepage from './pages/homepage';
+import './App.css';
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
             <Route path="/computer" element={<Computer />} />
           </Routes>
 
-
+          
         </Router>
         <Footer />
+     
       </div>
   )
 }

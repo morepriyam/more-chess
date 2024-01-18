@@ -3,10 +3,10 @@ import TextField from "@mui/material/TextField";
 import {Card, Grid, Typography, styled} from "@mui/material";
 import { useState } from 'react';
 import axios from 'axios';
-import { SportsEsports } from '@mui/icons-material';
+import { VpnKey } from '@mui/icons-material';
 
 const CustomTextfeild = styled(TextField) (({theme}) => ({
-    minWidth:300,
+    minWidth:400,
     backgroundColor: theme.palette.secondary.light
     }));
 
@@ -21,10 +21,11 @@ function Signin() {
     direction="column"
     alignItems="center"
     justifyContent="center"
-    sx={{ minHeight: '100vh',backgroundColor:"#302E2B"  }}>
-      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 400, padding: 5 , justifyItems:"center",marginTop: -100,}} >
+    minHeight='100vh'
+    bgcolor='#302E2B'>
+      <Card variant={"outlined"}  style={{ display:"grid", minWidth: 500, padding: 10 ,paddingBottom:30, justifyItems:"center",marginTop: -120}} >
       <Typography variant="h5" padding="10px" marginBottom="40px" display="flex"  alignItems="center" gap="10px">
-                SignIn Below! <SportsEsports color='error'/>
+                Sign-In.. Below! <VpnKey color='warning'/>
             </Typography>
 
             

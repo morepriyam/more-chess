@@ -8,7 +8,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
-    <Box  flex={2} sx={{display:{xs: isOpen ? 'block' : 'none', sm: isOpen ? 'block' : 'none', md: isOpen ? 'block':'none', lg: 'block'}}}  >
+    <Box  flex={2} sx={{display:{xs: isOpen ? 'block' : 'none', sm: isOpen ? 'block' : 'none', md: isOpen ? 'block':'none', lg: isOpen ? 'none':'block'}}}  >
         <Box p={3}  pt={6} position="fixed" sx={{ width: '275px', maxWidth: 200, bgcolor: '#262522' , height:'100vh' , color:"text.primary" }}>
           
          <List>
@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#play">
+            <ListItemButton component="a" href="/1vs1">
               <ListItemIcon>
                 <SportsEsports color='info'/>
               </ListItemIcon>

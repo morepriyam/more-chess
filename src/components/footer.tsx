@@ -3,7 +3,7 @@ import { BottomNavigation, BottomNavigationAction, Paper, Typography} from "@mui
 
 export const Footer = () => {
   return (
-    <Paper  sx={{position: 'fixed', bottom: 0, left: 0, right: 0 }}  elevation={3}>
+    <Paper  sx={{position: 'sticky', bottom: 0, left: 0, right: 0 }}  elevation={3}>
       <Typography display="flex" justifyContent="center" mt={1}>Let's Connect :</Typography>
       <BottomNavigation>
       <BottomNavigationAction href="https://twitter.com/priyamrm?s=21&t=0yJ0KtSz7ojIUvpHah77nw" label="Twitter" target="_blank" rel="noopener noreferrer" icon={<X color="info"/>} />

@@ -2,7 +2,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Cpu, GameController } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
-import { useState,  useEffect, useRef } from 'react';
+import { useState,  useEffect} from 'react';
 import { AppBar, Avatar, Badge, Box, Menu, MenuItem, Stack, Typography, styled } from '@mui/material';
 import { Mail, Notifications } from '@mui/icons-material';
 import Sidebar from './Sidebar';
@@ -40,7 +40,6 @@ export default function ButtonAppBar() {
   const [userEmail, setUserEmail] = useState(null);
   const [open,setOpen] = useState(false);
   const [open1,setOpen1] = useState(false);
-  const avatarRef = useRef(null);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -95,11 +94,10 @@ export default function ButtonAppBar() {
             <Badge badgeContent={4} color='error'><Mail/></Badge>
             <Badge badgeContent={4} color='error'><Notifications/></Badge>
             <Avatar sx={{width:40,height:40}} src='https://img.freepik.com/free-photo/headshot-charismatic-pleasant-friendly-european-woman-short-chestnut-haircut-smiling-positive-feeling-happy-upbeat-enjoying-lifes-casually-talking-friends-amused-cheerful-standing-white-background_176420-34680.jpg?size=626&ext=jpg&ga=GA1.1.632798143.1705276800&semt=ais' 
-            onClick={e => setOpen(true) }  ref={avatarRef}/>
+            onClick={e => setOpen(true) }/>
           </Icons>
           <UserBox onClick={e => setOpen(true) } >
-          <Avatar sx={{width:40,height:40}} src='https://img.freepik.com/free-photo/headshot-charismatic-pleasant-friendly-european-woman-short-chestnut-haircut-smiling-positive-feeling-happy-upbeat-enjoying-lifes-casually-talking-friends-amused-cheerful-standing-white-background_176420-34680.jpg?size=626&ext=jpg&ga=GA1.1.632798143.1705276800&semt=ais'
-           ref={avatarRef}></Avatar>
+          <Avatar sx={{width:40,height:40}} src='https://img.freepik.com/free-photo/headshot-charismatic-pleasant-friendly-european-woman-short-chestnut-haircut-smiling-positive-feeling-happy-upbeat-enjoying-lifes-casually-talking-friends-amused-cheerful-standing-white-background_176420-34680.jpg?size=626&ext=jpg&ga=GA1.1.632798143.1705276800&semt=ais'></Avatar>
           <Typography component="span">Priyam</Typography>
           </UserBox>
         </StyledToolbar>
