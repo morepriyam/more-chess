@@ -4,12 +4,16 @@ import Rightbar from "../components/Rightbar";
 
 export const Homepage = () => {
   return (
-    <Stack direction="row" spacing={2} justifyContent="space-between" height='100vh'>
-        <Feed/>
-        <Rightbar/>   
-  </Stack>
-)
-}
-
+    <Stack
+      direction="row"
+      spacing={2}
+      justifyContent="space-between"
+      height="100vh"
+    >
+      <Feed />
+      <Rightbar />
+    </Stack>
+  );
+};
 
 export default Homepage;
