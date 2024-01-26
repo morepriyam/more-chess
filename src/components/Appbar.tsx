@@ -49,13 +49,13 @@ export default function ButtonAppBar() {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
 
-  const userEmail = useAuth(); //Custom hook
+  const userName = useAuth(); //Custom hook
 
   const toggleSidebar = () => {
     setOpen1(!open1);
   };
 
-  if (userEmail) {
+  if (userName) {
     return (
       <AppBar position="sticky">
         <StyledToolbar>
@@ -75,6 +75,7 @@ export default function ButtonAppBar() {
               display: { xs: "block", sm: "none" },
               height: "25px",
               width: "32px",
+              cursor: "pointer",
             }}
             onClick={toggleSidebar}
           />
@@ -95,7 +96,7 @@ export default function ButtonAppBar() {
           >
             <Cpu size={53} color="#A7E16A" weight="thin" />
           </Button>
-          <Icons>
+          <Icons sx={{ cursor: "pointer" }}>
             <Badge badgeContent={4} color="error">
               <Mail />
             </Badge>
@@ -104,14 +105,14 @@ export default function ButtonAppBar() {
             </Badge>
             <Avatar
               sx={{ width: 40, height: 40 }}
-              src="https://img.freepik.com/free-photo/headshot-charismatic-pleasant-friendly-european-woman-short-chestnut-haircut-smiling-positive-feeling-happy-upbeat-enjoying-lifes-casually-talking-friends-amused-cheerful-standing-white-background_176420-34680.jpg?size=626&ext=jpg&ga=GA1.1.632798143.1705276800&semt=ais"
+              src="https://pbs.twimg.com/profile_images/1669958005750734848/Y2x-zpAv_400x400.jpg"
               onClick={(e) => setOpen(true)}
             />
           </Icons>
           <UserBox onClick={(e) => setOpen(true)}>
             <Avatar
               sx={{ width: 40, height: 40 }}
-              src="https://img.freepik.com/free-photo/headshot-charismatic-pleasant-friendly-european-woman-short-chestnut-haircut-smiling-positive-feeling-happy-upbeat-enjoying-lifes-casually-talking-friends-amused-cheerful-standing-white-background_176420-34680.jpg?size=626&ext=jpg&ga=GA1.1.632798143.1705276800&semt=ais"
+              src="https://pbs.twimg.com/profile_images/1669958005750734848/Y2x-zpAv_400x400.jpg"
             ></Avatar>
             <Typography component="span">Priyam</Typography>
           </UserBox>
@@ -130,9 +131,10 @@ export default function ButtonAppBar() {
             horizontal: "right",
           }}
         >
-          <MenuItem>{userEmail}</MenuItem>
-          <MenuItem>Settings</MenuItem>
+          <MenuItem sx={{ cursor: "pointer" }}>{userName}</MenuItem>
+          <MenuItem sx={{ cursor: "pointer" }}>Settings</MenuItem>
           <MenuItem
+            sx={{ cursor: "pointer" }}
             onClick={() => {
               localStorage.removeItem("token");
               window.location.href = "/";

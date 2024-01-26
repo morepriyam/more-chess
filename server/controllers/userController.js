@@ -1,19 +1,20 @@
-const userModel = require("../models/user");
+const User = require("../models/user");
 const zod = require("zod");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Game = require("../models/game");
 const secret_key = process.env.secret_key || "priyam";
 
 const signup = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const existingUser = await userModel.findOne({ email: email });
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await userModel.create({
+    const result = await User.create({
       email: email,
       password: hashedPassword,
     });
@@ -28,7 +29,7 @@ const signup = async (req, res) => {
 const signin = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const existingUser = await userModel.findOne({ email: email });
+    const existingUser = await User.findOne({ email: email });
     if (!existingUser) {
       return res.status(404).json({ message: "User Not Found" });
     }
@@ -80,9 +81,60 @@ const inputValidation = (req, res, next) => {
   next();
 };
 
-const me = async (req, res) => {
+const name = async (req, res) => {
   const user = req.user;
-  res.status(200).json({ email: user.email });
+  const email = user.email;
+  const name = email.split("@")[0].toUpperCase();
+  res.status(200).json({ userName: name });
 };
 
-module.exports = { signup, signin, me, authenticateJwt, inputValidation };
+const game = async (req, res) => {
+  try {
+    const player = await User.findById(req.user.id);
+    const existingGame = await Game.findOne({ user1: true });
+    if (existingGame) {
+      const updatedGame = await Game.findOneAndUpdate(
+        { user1: true },
+        { user2: player },
+        { new: true }
+      );
+      return res.status(200).json({ message: "Game Started", updatedGame });
+    } else {
+      const newGame = new Game({ user1: player });
+      const savedGame = await newGame.save();
+
+      return res.status(201).json({ message: "New game created", savedGame });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const move = async (req, res) => {
+  try {
+    const fen = req.body.fen;
+    const game = await Game.findOne({
+      $or: [{ user1: req.user.id }, { user2: req.user.id }],
+    });
+    if (!game) {
+      return res.status(404).json({ error: "Game not found" });
+    }
+    game.fen = fen;
+    await game.save();
+    res.status(200).json({ message: "Game updated", game });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = {
+  signup,
+  signin,
+  name,
+  authenticateJwt,
+  inputValidation,
+  game,
+  move,
+};

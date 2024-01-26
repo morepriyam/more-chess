@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useAuth = () => {
-  const [userEmail, setUserEmail] = useState(null);
+  const [userName, setUserName] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -14,9 +14,9 @@ export const useAuth = () => {
         })
           .then((res) => {
             if (res.ok) {
-              return res.json().then((data: { email: any }) => {
-                if (data.email) {
-                  setUserEmail(data.email);
+              return res.json().then((data: { userName: any }) => {
+                if (data.userName) {
+                  setUserName(data.userName);
                 }
               });
             } else {
@@ -33,5 +33,5 @@ export const useAuth = () => {
       console.log("User not logged in");
     }
   }, []);
-  return userEmail;
+  return userName;
 };
