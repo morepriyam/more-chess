@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const Player = () => {
-  const userName = useAuth();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!userName) {
-      window.alert("login first");
-      navigate("/signin");
-    }
-  }, [userName, navigate]);
+  // const userName = useAuth();
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (!userName) {
+  //     window.alert("login first");
+  //     navigate("/signin");
+  //   }
+  // }, [userName, navigate]);
 
   return (
     <Box height="100vh">
