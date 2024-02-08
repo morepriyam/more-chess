@@ -21,8 +21,9 @@ function Signin() {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      minHeight="100vh"
+      flexGrow={1}
       bgcolor="#302E2B"
+      position="relative"
     >
       <Card
         variant={"outlined"}
@@ -32,7 +33,8 @@ function Signin() {
           padding: 10,
           paddingBottom: 30,
           justifyItems: "center",
-          marginTop: -120,
+          position: "fixed",
+          top: "200px",
         }}
       >
         <Typography
@@ -43,7 +45,7 @@ function Signin() {
           alignItems="center"
           gap="10px"
         >
-          Sign-In.. Below! <VpnKey color="warning" />
+          Sign-In Below <VpnKey color="warning" sx={{ fontSize: "35px" }} />
         </Typography>
 
         <CustomTextfeild

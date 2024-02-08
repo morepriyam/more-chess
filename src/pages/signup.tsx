@@ -40,8 +40,9 @@ function Signup() {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      minHeight="100vh"
+      flexGrow={1}
       bgcolor="#302E2B"
+      position="relative"
     >
       <Card
         variant={"outlined"}
@@ -50,7 +51,8 @@ function Signup() {
           minWidth: 500,
           padding: 10,
           justifyItems: "center",
-          marginTop: -120,
+          position: "fixed",
+          top: "200px",
         }}
       >
         <Typography
@@ -61,7 +63,8 @@ function Signup() {
           alignItems="center"
           gap="10px"
         >
-          <SportsEsports color="warning" /> Welcome To More-Chess....
+          <SportsEsports color="warning" sx={{ fontSize: "35px" }} /> Welcome To
+          More-Chess..
         </Typography>
 
         <CustomTextfeild

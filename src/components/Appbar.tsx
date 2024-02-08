@@ -114,7 +114,7 @@ export default function ButtonAppBar() {
               sx={{ width: 40, height: 40 }}
               src="https://pbs.twimg.com/profile_images/1669958005750734848/Y2x-zpAv_400x400.jpg"
             ></Avatar>
-            <Typography component="span">Priyam</Typography>
+            <Typography component="span">{userName}</Typography>
           </UserBox>
         </StyledToolbar>
         <Menu

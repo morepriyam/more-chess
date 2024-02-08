@@ -1,8 +1,8 @@
 import WithMoveValidation from "../components/Chessbrd";
 import { Box, Stack } from "@mui/material";
-import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import { useAuth } from "../hooks/useAuth";
+// import { useNavigate } from "react-router-dom";
+// import { useEffect } from "react";
 
 export const Computer = () => {
   // const userName = useAuth();

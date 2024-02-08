@@ -27,7 +27,7 @@ const HumanVsHuman = ({ children }) => {
           ...{
             [c]: {
               background:
-                "radial-gradient(circle, #00ff00 20%, transparent 10%)",
+                "radial-gradient(circle, #CEF7F7 20%, transparent 10%)",
               borderRadius: "50%",
             },
           },
@@ -150,7 +150,7 @@ const WithMoveValidation = () => {
         }) => (
           <Chessboard
             id="humanVsHuman"
-            width={330}
+            width={400}
             position={position}
             onDrop={onDrop}
             onMouseOverSquare={onMouseOverSquare}
@@ -164,7 +164,7 @@ const WithMoveValidation = () => {
             onDragOverSquare={onDragOverSquare}
             onSquareClick={onSquareClick}
             onSquareRightClick={onSquareRightClick}
-            darkSquareStyle={{ backgroundColor: "rgb(216,139,116)" }}
+            darkSquareStyle={{ backgroundColor: "rgb(93,193,229)" }}
             lightSquareStyle={{ backgroundColor: "rgb(255,251,253)" }}
           />
         )}
